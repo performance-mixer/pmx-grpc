@@ -1,0 +1,6 @@
+syntax = "proto3";
+import "port.proto";
+
+package pmx.grpc;
+
+service PmxGrpc { rpc ListPorts(ListPortsRequest) returns (ListPortsResponse); }
