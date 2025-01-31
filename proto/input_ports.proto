@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package pmx.grpc;
+
+message SetupInputPortRequest {
+    string port = 1;
+    uint32 channel_id = 2;
+  }

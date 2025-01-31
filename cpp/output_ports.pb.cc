@@ -27,61 +27,6 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 namespace pmx {
 namespace grpc {
 
-inline constexpr StereoPort::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : left_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        right_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR StereoPort::StereoPort(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct StereoPortDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR StereoPortDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~StereoPortDefaultTypeInternal() {}
-  union {
-    StereoPort _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StereoPortDefaultTypeInternal _StereoPort_default_instance_;
-
-inline constexpr SetOutputPortsResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : success_{false},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR SetOutputPortsResponse::SetOutputPortsResponse(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct SetOutputPortsResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SetOutputPortsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SetOutputPortsResponseDefaultTypeInternal() {}
-  union {
-    SetOutputPortsResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetOutputPortsResponseDefaultTypeInternal _SetOutputPortsResponse_default_instance_;
-
 inline constexpr SetOutputPortsRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : ports_{},
@@ -116,16 +61,6 @@ const ::uint32_t
     TableStruct_output_5fports_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
         ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::pmx::grpc::StereoPort, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::pmx::grpc::StereoPort, _impl_.left_),
-        PROTOBUF_FIELD_OFFSET(::pmx::grpc::StereoPort, _impl_.right_),
-        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetOutputPortsRequest, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -134,47 +69,36 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetOutputPortsRequest, _impl_.ports_),
-        ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetOutputPortsResponse, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetOutputPortsResponse, _impl_.success_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::pmx::grpc::StereoPort)},
-        {10, -1, -1, sizeof(::pmx::grpc::SetOutputPortsRequest)},
-        {19, -1, -1, sizeof(::pmx::grpc::SetOutputPortsResponse)},
+        {0, -1, -1, sizeof(::pmx::grpc::SetOutputPortsRequest)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
-    &::pmx::grpc::_StereoPort_default_instance_._instance,
     &::pmx::grpc::_SetOutputPortsRequest_default_instance_._instance,
-    &::pmx::grpc::_SetOutputPortsResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_output_5fports_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\022output_ports.proto\022\010pmx.grpc\")\n\nStereo"
-    "Port\022\014\n\004left\030\001 \001(\t\022\r\n\005right\030\002 \001(\t\"<\n\025Set"
-    "OutputPortsRequest\022#\n\005ports\030\001 \003(\0132\024.pmx."
-    "grpc.StereoPort\")\n\026SetOutputPortsRespons"
-    "e\022\017\n\007success\030\001 \001(\010b\006proto3"
+    "\n\022output_ports.proto\022\010pmx.grpc\032\021stereo_p"
+    "ort.proto\"<\n\025SetOutputPortsRequest\022#\n\005po"
+    "rts\030\001 \003(\0132\024.pmx.grpc.StereoPortb\006proto3"
+};
+static const ::_pbi::DescriptorTable* const descriptor_table_output_5fports_2eproto_deps[1] =
+    {
+        &::descriptor_table_stereo_5fport_2eproto,
 };
 static ::absl::once_flag descriptor_table_output_5fports_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_output_5fports_2eproto = {
     false,
     false,
-    186,
+    119,
     descriptor_table_protodef_output_5fports_2eproto,
     "output_ports.proto",
     &descriptor_table_output_5fports_2eproto_once,
-    nullptr,
-    0,
-    3,
+    descriptor_table_output_5fports_2eproto_deps,
+    1,
+    1,
     schemas,
     file_default_instances,
     TableStruct_output_5fports_2eproto::offsets,
@@ -185,270 +109,14 @@ namespace pmx {
 namespace grpc {
 // ===================================================================
 
-class StereoPort::_Internal {
- public:
-};
-
-StereoPort::StereoPort(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:pmx.grpc.StereoPort)
-}
-inline PROTOBUF_NDEBUG_INLINE StereoPort::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from, const ::pmx::grpc::StereoPort& from_msg)
-      : left_(arena, from.left_),
-        right_(arena, from.right_),
-        _cached_size_{0} {}
-
-StereoPort::StereoPort(
-    ::google::protobuf::Arena* arena,
-    const StereoPort& from)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  StereoPort* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-
-  // @@protoc_insertion_point(copy_constructor:pmx.grpc.StereoPort)
-}
-inline PROTOBUF_NDEBUG_INLINE StereoPort::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : left_(arena),
-        right_(arena),
-        _cached_size_{0} {}
-
-inline void StereoPort::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-StereoPort::~StereoPort() {
-  // @@protoc_insertion_point(destructor:pmx.grpc.StereoPort)
-  SharedDtor(*this);
-}
-inline void StereoPort::SharedDtor(MessageLite& self) {
-  StereoPort& this_ = static_cast<StereoPort&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.left_.Destroy();
-  this_._impl_.right_.Destroy();
-  this_._impl_.~Impl_();
-}
-
-inline void* StereoPort::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) StereoPort(arena);
-}
-constexpr auto StereoPort::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(StereoPort),
-                                            alignof(StereoPort));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull StereoPort::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_StereoPort_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &StereoPort::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<StereoPort>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &StereoPort::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<StereoPort>(), &StereoPort::ByteSizeLong,
-            &StereoPort::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(StereoPort, _impl_._cached_size_),
-        false,
-    },
-    &StereoPort::kDescriptorMethods,
-    &descriptor_table_output_5fports_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* StereoPort::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 37, 2> StereoPort::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::pmx::grpc::StereoPort>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    // string right = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(StereoPort, _impl_.right_)}},
-    // string left = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(StereoPort, _impl_.left_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string left = 1;
-    {PROTOBUF_FIELD_OFFSET(StereoPort, _impl_.left_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string right = 2;
-    {PROTOBUF_FIELD_OFFSET(StereoPort, _impl_.right_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\23\4\5\0\0\0\0\0"
-    "pmx.grpc.StereoPort"
-    "left"
-    "right"
-  }},
-};
-
-PROTOBUF_NOINLINE void StereoPort::Clear() {
-// @@protoc_insertion_point(message_clear_start:pmx.grpc.StereoPort)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.left_.ClearToEmpty();
-  _impl_.right_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* StereoPort::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const StereoPort& this_ = static_cast<const StereoPort&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* StereoPort::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const StereoPort& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:pmx.grpc.StereoPort)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          // string left = 1;
-          if (!this_._internal_left().empty()) {
-            const std::string& _s = this_._internal_left();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "pmx.grpc.StereoPort.left");
-            target = stream->WriteStringMaybeAliased(1, _s, target);
-          }
-
-          // string right = 2;
-          if (!this_._internal_right().empty()) {
-            const std::string& _s = this_._internal_right();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "pmx.grpc.StereoPort.right");
-            target = stream->WriteStringMaybeAliased(2, _s, target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:pmx.grpc.StereoPort)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t StereoPort::ByteSizeLong(const MessageLite& base) {
-          const StereoPort& this_ = static_cast<const StereoPort&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t StereoPort::ByteSizeLong() const {
-          const StereoPort& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:pmx.grpc.StereoPort)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
-           {
-            // string left = 1;
-            if (!this_._internal_left().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_left());
-            }
-            // string right = 2;
-            if (!this_._internal_right().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_right());
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void StereoPort::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<StereoPort*>(&to_msg);
-  auto& from = static_cast<const StereoPort&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:pmx.grpc.StereoPort)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_left().empty()) {
-    _this->_internal_set_left(from._internal_left());
-  }
-  if (!from._internal_right().empty()) {
-    _this->_internal_set_right(from._internal_right());
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void StereoPort::CopyFrom(const StereoPort& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:pmx.grpc.StereoPort)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void StereoPort::InternalSwap(StereoPort* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.left_, &other->_impl_.left_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.right_, &other->_impl_.right_, arena);
-}
-
-::google::protobuf::Metadata StereoPort::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
 class SetOutputPortsRequest::_Internal {
  public:
 };
 
+void SetOutputPortsRequest::clear_ports() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ports_.Clear();
+}
 SetOutputPortsRequest::SetOutputPortsRequest(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -683,212 +351,6 @@ void SetOutputPortsRequest::InternalSwap(SetOutputPortsRequest* PROTOBUF_RESTRIC
 }
 
 ::google::protobuf::Metadata SetOutputPortsRequest::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
-class SetOutputPortsResponse::_Internal {
- public:
-};
-
-SetOutputPortsResponse::SetOutputPortsResponse(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:pmx.grpc.SetOutputPortsResponse)
-}
-SetOutputPortsResponse::SetOutputPortsResponse(
-    ::google::protobuf::Arena* arena, const SetOutputPortsResponse& from)
-    : SetOutputPortsResponse(arena) {
-  MergeFrom(from);
-}
-inline PROTOBUF_NDEBUG_INLINE SetOutputPortsResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
-
-inline void SetOutputPortsResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.success_ = {};
-}
-SetOutputPortsResponse::~SetOutputPortsResponse() {
-  // @@protoc_insertion_point(destructor:pmx.grpc.SetOutputPortsResponse)
-  SharedDtor(*this);
-}
-inline void SetOutputPortsResponse::SharedDtor(MessageLite& self) {
-  SetOutputPortsResponse& this_ = static_cast<SetOutputPortsResponse&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.~Impl_();
-}
-
-inline void* SetOutputPortsResponse::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) SetOutputPortsResponse(arena);
-}
-constexpr auto SetOutputPortsResponse::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetOutputPortsResponse),
-                                            alignof(SetOutputPortsResponse));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull SetOutputPortsResponse::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_SetOutputPortsResponse_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &SetOutputPortsResponse::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<SetOutputPortsResponse>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &SetOutputPortsResponse::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<SetOutputPortsResponse>(), &SetOutputPortsResponse::ByteSizeLong,
-            &SetOutputPortsResponse::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(SetOutputPortsResponse, _impl_._cached_size_),
-        false,
-    },
-    &SetOutputPortsResponse::kDescriptorMethods,
-    &descriptor_table_output_5fports_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* SetOutputPortsResponse::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> SetOutputPortsResponse::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::pmx::grpc::SetOutputPortsResponse>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    // bool success = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SetOutputPortsResponse, _impl_.success_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(SetOutputPortsResponse, _impl_.success_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // bool success = 1;
-    {PROTOBUF_FIELD_OFFSET(SetOutputPortsResponse, _impl_.success_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-  }},
-  // no aux_entries
-  {{
-  }},
-};
-
-PROTOBUF_NOINLINE void SetOutputPortsResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:pmx.grpc.SetOutputPortsResponse)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.success_ = false;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* SetOutputPortsResponse::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const SetOutputPortsResponse& this_ = static_cast<const SetOutputPortsResponse&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* SetOutputPortsResponse::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const SetOutputPortsResponse& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:pmx.grpc.SetOutputPortsResponse)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          // bool success = 1;
-          if (this_._internal_success() != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteBoolToArray(
-                1, this_._internal_success(), target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:pmx.grpc.SetOutputPortsResponse)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t SetOutputPortsResponse::ByteSizeLong(const MessageLite& base) {
-          const SetOutputPortsResponse& this_ = static_cast<const SetOutputPortsResponse&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t SetOutputPortsResponse::ByteSizeLong() const {
-          const SetOutputPortsResponse& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:pmx.grpc.SetOutputPortsResponse)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-           {
-            // bool success = 1;
-            if (this_._internal_success() != 0) {
-              total_size += 2;
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void SetOutputPortsResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<SetOutputPortsResponse*>(&to_msg);
-  auto& from = static_cast<const SetOutputPortsResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:pmx.grpc.SetOutputPortsResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_success() != 0) {
-    _this->_impl_.success_ = from._impl_.success_;
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void SetOutputPortsResponse::CopyFrom(const SetOutputPortsResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:pmx.grpc.SetOutputPortsResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void SetOutputPortsResponse::InternalSwap(SetOutputPortsResponse* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.success_, other->_impl_.success_);
-}
-
-::google::protobuf::Metadata SetOutputPortsResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

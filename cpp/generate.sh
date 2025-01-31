@@ -1,3 +1,7 @@
 protoc -I ../proto --grpc_out=. --cpp_out=. ../proto/pmx_grpc.proto --plugin="protoc-gen-grpc=/usr/bin/grpc_cpp_plugin"
 protoc -I ../proto --grpc_out=. --cpp_out=. ../proto/port.proto --plugin="protoc-gen-grpc=/usr/bin/grpc_cpp_plugin"
 protoc -I ../proto --grpc_out=. --cpp_out=. ../proto/output_ports.proto --plugin="protoc-gen-grpc=/usr/bin/grpc_cpp_plugin"
+protoc -I ../proto --grpc_out=. --cpp_out=. ../proto/input_ports.proto --plugin="protoc-gen-grpc=/usr/bin/grpc_cpp_plugin"
+protoc -I ../proto --grpc_out=. --cpp_out=. ../proto/stereo_port.proto --plugin="protoc-gen-grpc=/usr/bin/grpc_cpp_plugin"
+protoc -I ../proto --grpc_out=. --cpp_out=. ../proto/mono_port.proto --plugin="protoc-gen-grpc=/usr/bin/grpc_cpp_plugin"
+protoc -I ../proto --grpc_out=. --cpp_out=. ../proto/response.proto --plugin="protoc-gen-grpc=/usr/bin/grpc_cpp_plugin"
