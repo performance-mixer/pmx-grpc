@@ -43,11 +43,20 @@ class PmxGrpc final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::ListPortsResponse>> PrepareAsyncListPorts(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::ListPortsResponse>>(PrepareAsyncListPortsRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::pmx::grpc::SetOutputPortsResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::SetOutputPortsResponse>> AsyncSetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::SetOutputPortsResponse>>(AsyncSetOutputPortsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::SetOutputPortsResponse>> PrepareAsyncSetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::SetOutputPortsResponse>>(PrepareAsyncSetOutputPortsRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void ListPorts(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest* request, ::pmx::grpc::ListPortsResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ListPorts(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest* request, ::pmx::grpc::ListPortsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest* request, ::pmx::grpc::SetOutputPortsResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest* request, ::pmx::grpc::SetOutputPortsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -55,6 +64,8 @@ class PmxGrpc final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::ListPortsResponse>* AsyncListPortsRaw(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::ListPortsResponse>* PrepareAsyncListPortsRaw(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::SetOutputPortsResponse>* AsyncSetOutputPortsRaw(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::pmx::grpc::SetOutputPortsResponse>* PrepareAsyncSetOutputPortsRaw(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -66,11 +77,20 @@ class PmxGrpc final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::pmx::grpc::ListPortsResponse>> PrepareAsyncListPorts(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::pmx::grpc::ListPortsResponse>>(PrepareAsyncListPortsRaw(context, request, cq));
     }
+    ::grpc::Status SetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::pmx::grpc::SetOutputPortsResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::pmx::grpc::SetOutputPortsResponse>> AsyncSetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::pmx::grpc::SetOutputPortsResponse>>(AsyncSetOutputPortsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::pmx::grpc::SetOutputPortsResponse>> PrepareAsyncSetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::pmx::grpc::SetOutputPortsResponse>>(PrepareAsyncSetOutputPortsRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void ListPorts(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest* request, ::pmx::grpc::ListPortsResponse* response, std::function<void(::grpc::Status)>) override;
       void ListPorts(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest* request, ::pmx::grpc::ListPortsResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest* request, ::pmx::grpc::SetOutputPortsResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetOutputPorts(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest* request, ::pmx::grpc::SetOutputPortsResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -84,7 +104,10 @@ class PmxGrpc final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::pmx::grpc::ListPortsResponse>* AsyncListPortsRaw(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::pmx::grpc::ListPortsResponse>* PrepareAsyncListPortsRaw(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::pmx::grpc::SetOutputPortsResponse>* AsyncSetOutputPortsRaw(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::pmx::grpc::SetOutputPortsResponse>* PrepareAsyncSetOutputPortsRaw(::grpc::ClientContext* context, const ::pmx::grpc::SetOutputPortsRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_ListPorts_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetOutputPorts_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -93,6 +116,7 @@ class PmxGrpc final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status ListPorts(::grpc::ServerContext* context, const ::pmx::grpc::ListPortsRequest* request, ::pmx::grpc::ListPortsResponse* response);
+    virtual ::grpc::Status SetOutputPorts(::grpc::ServerContext* context, const ::pmx::grpc::SetOutputPortsRequest* request, ::pmx::grpc::SetOutputPortsResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_ListPorts : public BaseClass {
@@ -114,7 +138,27 @@ class PmxGrpc final {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_ListPorts<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SetOutputPorts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetOutputPorts() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_SetOutputPorts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutputPorts(::grpc::ServerContext* /*context*/, const ::pmx::grpc::SetOutputPortsRequest* /*request*/, ::pmx::grpc::SetOutputPortsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetOutputPorts(::grpc::ServerContext* context, ::pmx::grpc::SetOutputPortsRequest* request, ::grpc::ServerAsyncResponseWriter< ::pmx::grpc::SetOutputPortsResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_ListPorts<WithAsyncMethod_SetOutputPorts<Service > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_ListPorts : public BaseClass {
    private:
@@ -142,7 +186,34 @@ class PmxGrpc final {
     virtual ::grpc::ServerUnaryReactor* ListPorts(
       ::grpc::CallbackServerContext* /*context*/, const ::pmx::grpc::ListPortsRequest* /*request*/, ::pmx::grpc::ListPortsResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_ListPorts<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SetOutputPorts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetOutputPorts() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::pmx::grpc::SetOutputPortsRequest, ::pmx::grpc::SetOutputPortsResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::pmx::grpc::SetOutputPortsRequest* request, ::pmx::grpc::SetOutputPortsResponse* response) { return this->SetOutputPorts(context, request, response); }));}
+    void SetMessageAllocatorFor_SetOutputPorts(
+        ::grpc::MessageAllocator< ::pmx::grpc::SetOutputPortsRequest, ::pmx::grpc::SetOutputPortsResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::pmx::grpc::SetOutputPortsRequest, ::pmx::grpc::SetOutputPortsResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetOutputPorts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutputPorts(::grpc::ServerContext* /*context*/, const ::pmx::grpc::SetOutputPortsRequest* /*request*/, ::pmx::grpc::SetOutputPortsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetOutputPorts(
+      ::grpc::CallbackServerContext* /*context*/, const ::pmx::grpc::SetOutputPortsRequest* /*request*/, ::pmx::grpc::SetOutputPortsResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_ListPorts<WithCallbackMethod_SetOutputPorts<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_ListPorts : public BaseClass {
@@ -157,6 +228,23 @@ class PmxGrpc final {
     }
     // disable synchronous version of this method
     ::grpc::Status ListPorts(::grpc::ServerContext* /*context*/, const ::pmx::grpc::ListPortsRequest* /*request*/, ::pmx::grpc::ListPortsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SetOutputPorts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetOutputPorts() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_SetOutputPorts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutputPorts(::grpc::ServerContext* /*context*/, const ::pmx::grpc::SetOutputPortsRequest* /*request*/, ::pmx::grpc::SetOutputPortsResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -182,6 +270,26 @@ class PmxGrpc final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SetOutputPorts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetOutputPorts() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_SetOutputPorts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutputPorts(::grpc::ServerContext* /*context*/, const ::pmx::grpc::SetOutputPortsRequest* /*request*/, ::pmx::grpc::SetOutputPortsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetOutputPorts(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_ListPorts : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -201,6 +309,28 @@ class PmxGrpc final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* ListPorts(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SetOutputPorts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetOutputPorts() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetOutputPorts(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetOutputPorts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutputPorts(::grpc::ServerContext* /*context*/, const ::pmx::grpc::SetOutputPortsRequest* /*request*/, ::pmx::grpc::SetOutputPortsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetOutputPorts(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -230,9 +360,36 @@ class PmxGrpc final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedListPorts(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::pmx::grpc::ListPortsRequest,::pmx::grpc::ListPortsResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_ListPorts<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SetOutputPorts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetOutputPorts() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::pmx::grpc::SetOutputPortsRequest, ::pmx::grpc::SetOutputPortsResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::pmx::grpc::SetOutputPortsRequest, ::pmx::grpc::SetOutputPortsResponse>* streamer) {
+                       return this->StreamedSetOutputPorts(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetOutputPorts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetOutputPorts(::grpc::ServerContext* /*context*/, const ::pmx::grpc::SetOutputPortsRequest* /*request*/, ::pmx::grpc::SetOutputPortsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetOutputPorts(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::pmx::grpc::SetOutputPortsRequest,::pmx::grpc::SetOutputPortsResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_ListPorts<WithStreamedUnaryMethod_SetOutputPorts<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_ListPorts<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_ListPorts<WithStreamedUnaryMethod_SetOutputPorts<Service > > StreamedService;
 };
 
 }  // namespace grpc
