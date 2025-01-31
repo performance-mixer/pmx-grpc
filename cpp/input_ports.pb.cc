@@ -54,6 +54,33 @@ struct SetupInputPortRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetupInputPortRequestDefaultTypeInternal _SetupInputPortRequest_default_instance_;
+
+inline constexpr ClearInputPortRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : channel_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ClearInputPortRequest::ClearInputPortRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ClearInputPortRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ClearInputPortRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ClearInputPortRequestDefaultTypeInternal() {}
+  union {
+    ClearInputPortRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ClearInputPortRequestDefaultTypeInternal _ClearInputPortRequest_default_instance_;
 }  // namespace grpc
 }  // namespace pmx
 static constexpr const ::_pb::EnumDescriptor**
@@ -73,32 +100,44 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetupInputPortRequest, _impl_.port_),
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetupInputPortRequest, _impl_.channel_id_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::ClearInputPortRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::ClearInputPortRequest, _impl_.channel_id_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::pmx::grpc::SetupInputPortRequest)},
+        {10, -1, -1, sizeof(::pmx::grpc::ClearInputPortRequest)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::pmx::grpc::_SetupInputPortRequest_default_instance_._instance,
+    &::pmx::grpc::_ClearInputPortRequest_default_instance_._instance,
 };
 const char descriptor_table_protodef_input_5fports_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\021input_ports.proto\022\010pmx.grpc\"9\n\025SetupIn"
     "putPortRequest\022\014\n\004port\030\001 \001(\t\022\022\n\nchannel_"
-    "id\030\002 \001(\rb\006proto3"
+    "id\030\002 \001(\r\"+\n\025ClearInputPortRequest\022\022\n\ncha"
+    "nnel_id\030\001 \001(\tb\006proto3"
 };
 static ::absl::once_flag descriptor_table_input_5fports_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_input_5fports_2eproto = {
     false,
     false,
-    96,
+    141,
     descriptor_table_protodef_input_5fports_2eproto,
     "input_ports.proto",
     &descriptor_table_input_5fports_2eproto_once,
     nullptr,
     0,
-    1,
+    2,
     schemas,
     file_default_instances,
     TableStruct_input_5fports_2eproto::offsets,
@@ -362,6 +401,237 @@ void SetupInputPortRequest::InternalSwap(SetupInputPortRequest* PROTOBUF_RESTRIC
 }
 
 ::google::protobuf::Metadata SetupInputPortRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ClearInputPortRequest::_Internal {
+ public:
+};
+
+ClearInputPortRequest::ClearInputPortRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:pmx.grpc.ClearInputPortRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE ClearInputPortRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::pmx::grpc::ClearInputPortRequest& from_msg)
+      : channel_id_(arena, from.channel_id_),
+        _cached_size_{0} {}
+
+ClearInputPortRequest::ClearInputPortRequest(
+    ::google::protobuf::Arena* arena,
+    const ClearInputPortRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ClearInputPortRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:pmx.grpc.ClearInputPortRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE ClearInputPortRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : channel_id_(arena),
+        _cached_size_{0} {}
+
+inline void ClearInputPortRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ClearInputPortRequest::~ClearInputPortRequest() {
+  // @@protoc_insertion_point(destructor:pmx.grpc.ClearInputPortRequest)
+  SharedDtor(*this);
+}
+inline void ClearInputPortRequest::SharedDtor(MessageLite& self) {
+  ClearInputPortRequest& this_ = static_cast<ClearInputPortRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.channel_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* ClearInputPortRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ClearInputPortRequest(arena);
+}
+constexpr auto ClearInputPortRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ClearInputPortRequest),
+                                            alignof(ClearInputPortRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ClearInputPortRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ClearInputPortRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ClearInputPortRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ClearInputPortRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ClearInputPortRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ClearInputPortRequest>(), &ClearInputPortRequest::ByteSizeLong,
+            &ClearInputPortRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ClearInputPortRequest, _impl_._cached_size_),
+        false,
+    },
+    &ClearInputPortRequest::kDescriptorMethods,
+    &descriptor_table_input_5fports_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ClearInputPortRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 49, 2> ClearInputPortRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::pmx::grpc::ClearInputPortRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string channel_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ClearInputPortRequest, _impl_.channel_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string channel_id = 1;
+    {PROTOBUF_FIELD_OFFSET(ClearInputPortRequest, _impl_.channel_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\36\12\0\0\0\0\0\0"
+    "pmx.grpc.ClearInputPortRequest"
+    "channel_id"
+  }},
+};
+
+PROTOBUF_NOINLINE void ClearInputPortRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:pmx.grpc.ClearInputPortRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.channel_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ClearInputPortRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ClearInputPortRequest& this_ = static_cast<const ClearInputPortRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ClearInputPortRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ClearInputPortRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:pmx.grpc.ClearInputPortRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string channel_id = 1;
+          if (!this_._internal_channel_id().empty()) {
+            const std::string& _s = this_._internal_channel_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "pmx.grpc.ClearInputPortRequest.channel_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:pmx.grpc.ClearInputPortRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ClearInputPortRequest::ByteSizeLong(const MessageLite& base) {
+          const ClearInputPortRequest& this_ = static_cast<const ClearInputPortRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ClearInputPortRequest::ByteSizeLong() const {
+          const ClearInputPortRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:pmx.grpc.ClearInputPortRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // string channel_id = 1;
+            if (!this_._internal_channel_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_channel_id());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ClearInputPortRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ClearInputPortRequest*>(&to_msg);
+  auto& from = static_cast<const ClearInputPortRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:pmx.grpc.ClearInputPortRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_channel_id().empty()) {
+    _this->_internal_set_channel_id(from._internal_channel_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ClearInputPortRequest::CopyFrom(const ClearInputPortRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:pmx.grpc.ClearInputPortRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ClearInputPortRequest::InternalSwap(ClearInputPortRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.channel_id_, &other->_impl_.channel_id_, arena);
+}
+
+::google::protobuf::Metadata ClearInputPortRequest::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

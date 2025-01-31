@@ -3,6 +3,6 @@ syntax = "proto3";
 package pmx.grpc;
 
 message MonoPort {
-    string left = 1;
-  }
+  string left = 1;
+}
 

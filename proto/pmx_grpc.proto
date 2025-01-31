@@ -7,7 +7,8 @@ import "response.proto";
 package pmx.grpc;
 
 service PmxGrpc {
-    rpc ListPorts(ListPortsRequest) returns (ListPortsResponse);
-    rpc SetOutputPorts(SetOutputPortsRequest) returns (Response);
-    rpc SetupInputPort(SetupInputPortRequest) returns (Response);
-  }
+  rpc ListPorts(ListPortsRequest) returns (ListPortsResponse);
+  rpc SetOutputPorts(SetOutputPortsRequest) returns (Response);
+  rpc SetupInputPort(SetupInputPortRequest) returns (Response);
+  rpc ClearInputPort(ClearInputPortRequest) returns (Response);
+}

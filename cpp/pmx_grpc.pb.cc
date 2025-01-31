@@ -39,13 +39,14 @@ const char descriptor_table_protodef_pmx_5fgrpc_2eproto[] ABSL_ATTRIBUTE_SECTION
     protodesc_cold) = {
     "\n\016pmx_grpc.proto\022\010pmx.grpc\032\nport.proto\032\022"
     "output_ports.proto\032\021input_ports.proto\032\016r"
-    "esponse.proto2\335\001\n\007PmxGrpc\022D\n\tListPorts\022\032"
+    "esponse.proto2\244\002\n\007PmxGrpc\022D\n\tListPorts\022\032"
     ".pmx.grpc.ListPortsRequest\032\033.pmx.grpc.Li"
     "stPortsResponse\022E\n\016SetOutputPorts\022\037.pmx."
     "grpc.SetOutputPortsRequest\032\022.pmx.grpc.Re"
     "sponse\022E\n\016SetupInputPort\022\037.pmx.grpc.Setu"
-    "pInputPortRequest\032\022.pmx.grpc.Responseb\006p"
-    "roto3"
+    "pInputPortRequest\032\022.pmx.grpc.Response\022E\n"
+    "\016ClearInputPort\022\037.pmx.grpc.ClearInputPor"
+    "tRequest\032\022.pmx.grpc.Responseb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_pmx_5fgrpc_2eproto_deps[4] =
     {
@@ -58,7 +59,7 @@ static ::absl::once_flag descriptor_table_pmx_5fgrpc_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_pmx_5fgrpc_2eproto = {
     false,
     false,
-    325,
+    396,
     descriptor_table_protodef_pmx_5fgrpc_2eproto,
     "pmx_grpc.proto",
     &descriptor_table_pmx_5fgrpc_2eproto_once,
