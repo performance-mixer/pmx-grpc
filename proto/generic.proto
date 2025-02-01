@@ -3,6 +3,7 @@ syntax = "proto3";
 package pmx.grpc;
 
 message Response {
-    bool success = 1;
-  }
+  bool success = 1;
+}
 
+message EmptyRequest {}

@@ -56,6 +56,9 @@ namespace grpc {
 class ClearInputPortRequest;
 struct ClearInputPortRequestDefaultTypeInternal;
 extern ClearInputPortRequestDefaultTypeInternal _ClearInputPortRequest_default_instance_;
+class ListInputPortSetupResponse;
+struct ListInputPortSetupResponseDefaultTypeInternal;
+extern ListInputPortSetupResponseDefaultTypeInternal _ListInputPortSetupResponse_default_instance_;
 class SetupInputPortRequest;
 struct SetupInputPortRequestDefaultTypeInternal;
 extern SetupInputPortRequestDefaultTypeInternal _SetupInputPortRequest_default_instance_;
@@ -274,6 +277,208 @@ class SetupInputPortRequest final : public ::google::protobuf::Message
                           const SetupInputPortRequest& from_msg);
     ::google::protobuf::internal::ArenaStringPtr port_;
     ::uint32_t channel_id_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_input_5fports_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ListInputPortSetupResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:pmx.grpc.ListInputPortSetupResponse) */ {
+ public:
+  inline ListInputPortSetupResponse() : ListInputPortSetupResponse(nullptr) {}
+  ~ListInputPortSetupResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ListInputPortSetupResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ListInputPortSetupResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ListInputPortSetupResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ListInputPortSetupResponse(const ListInputPortSetupResponse& from) : ListInputPortSetupResponse(nullptr, from) {}
+  inline ListInputPortSetupResponse(ListInputPortSetupResponse&& from) noexcept
+      : ListInputPortSetupResponse(nullptr, std::move(from)) {}
+  inline ListInputPortSetupResponse& operator=(const ListInputPortSetupResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListInputPortSetupResponse& operator=(ListInputPortSetupResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListInputPortSetupResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListInputPortSetupResponse* internal_default_instance() {
+    return reinterpret_cast<const ListInputPortSetupResponse*>(
+        &_ListInputPortSetupResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 2;
+  friend void swap(ListInputPortSetupResponse& a, ListInputPortSetupResponse& b) { a.Swap(&b); }
+  inline void Swap(ListInputPortSetupResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListInputPortSetupResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ListInputPortSetupResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ListInputPortSetupResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ListInputPortSetupResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ListInputPortSetupResponse& from) { ListInputPortSetupResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ListInputPortSetupResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "pmx.grpc.ListInputPortSetupResponse"; }
+
+ protected:
+  explicit ListInputPortSetupResponse(::google::protobuf::Arena* arena);
+  ListInputPortSetupResponse(::google::protobuf::Arena* arena, const ListInputPortSetupResponse& from);
+  ListInputPortSetupResponse(::google::protobuf::Arena* arena, ListInputPortSetupResponse&& from) noexcept
+      : ListInputPortSetupResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kPortsFieldNumber = 1,
+  };
+  // repeated string ports = 1;
+  int ports_size() const;
+  private:
+  int _internal_ports_size() const;
+
+  public:
+  void clear_ports() ;
+  const std::string& ports(int index) const;
+  std::string* mutable_ports(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_ports(int index, Arg_&& value, Args_... args);
+  std::string* add_ports();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_ports(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& ports() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_ports();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_ports() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_ports();
+
+  public:
+  // @@protoc_insertion_point(class_scope:pmx.grpc.ListInputPortSetupResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      49, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ListInputPortSetupResponse& from_msg);
+    ::google::protobuf::RepeatedPtrField<std::string> ports_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -581,6 +786,74 @@ inline ::uint32_t ClearInputPortRequest::_internal_channel_id() const {
 inline void ClearInputPortRequest::_internal_set_channel_id(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.channel_id_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ListInputPortSetupResponse
+
+// repeated string ports = 1;
+inline int ListInputPortSetupResponse::_internal_ports_size() const {
+  return _internal_ports().size();
+}
+inline int ListInputPortSetupResponse::ports_size() const {
+  return _internal_ports_size();
+}
+inline void ListInputPortSetupResponse::clear_ports() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ports_.Clear();
+}
+inline std::string* ListInputPortSetupResponse::add_ports() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_ports()->Add();
+  // @@protoc_insertion_point(field_add_mutable:pmx.grpc.ListInputPortSetupResponse.ports)
+  return _s;
+}
+inline const std::string& ListInputPortSetupResponse::ports(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:pmx.grpc.ListInputPortSetupResponse.ports)
+  return _internal_ports().Get(index);
+}
+inline std::string* ListInputPortSetupResponse::mutable_ports(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:pmx.grpc.ListInputPortSetupResponse.ports)
+  return _internal_mutable_ports()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void ListInputPortSetupResponse::set_ports(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_ports()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:pmx.grpc.ListInputPortSetupResponse.ports)
+}
+template <typename Arg_, typename... Args_>
+inline void ListInputPortSetupResponse::add_ports(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_ports(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:pmx.grpc.ListInputPortSetupResponse.ports)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+ListInputPortSetupResponse::ports() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:pmx.grpc.ListInputPortSetupResponse.ports)
+  return _internal_ports();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+ListInputPortSetupResponse::mutable_ports() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:pmx.grpc.ListInputPortSetupResponse.ports)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_ports();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+ListInputPortSetupResponse::_internal_ports() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ports_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+ListInputPortSetupResponse::_internal_mutable_ports() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.ports_;
 }
 
 #ifdef __GNUC__

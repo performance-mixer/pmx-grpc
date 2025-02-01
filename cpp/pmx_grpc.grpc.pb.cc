@@ -27,6 +27,7 @@ static const char* PmxGrpc_method_names[] = {
   "/pmx.grpc.PmxGrpc/SetOutputPorts",
   "/pmx.grpc.PmxGrpc/SetupInputPort",
   "/pmx.grpc.PmxGrpc/ClearInputPort",
+  "/pmx.grpc.PmxGrpc/ListInputPortsSetup",
 };
 
 std::unique_ptr< PmxGrpc::Stub> PmxGrpc::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -40,6 +41,7 @@ PmxGrpc::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, c
   , rpcmethod_SetOutputPorts_(PmxGrpc_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetupInputPort_(PmxGrpc_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ClearInputPort_(PmxGrpc_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ListInputPortsSetup_(PmxGrpc_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status PmxGrpc::Stub::ListPorts(::grpc::ClientContext* context, const ::pmx::grpc::ListPortsRequest& request, ::pmx::grpc::ListPortsResponse* response) {
@@ -134,6 +136,29 @@ void PmxGrpc::Stub::async::ClearInputPort(::grpc::ClientContext* context, const 
   return result;
 }
 
+::grpc::Status PmxGrpc::Stub::ListInputPortsSetup(::grpc::ClientContext* context, const ::pmx::grpc::EmptyRequest& request, ::pmx::grpc::ListInputPortSetupResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::pmx::grpc::EmptyRequest, ::pmx::grpc::ListInputPortSetupResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ListInputPortsSetup_, context, request, response);
+}
+
+void PmxGrpc::Stub::async::ListInputPortsSetup(::grpc::ClientContext* context, const ::pmx::grpc::EmptyRequest* request, ::pmx::grpc::ListInputPortSetupResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::pmx::grpc::EmptyRequest, ::pmx::grpc::ListInputPortSetupResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ListInputPortsSetup_, context, request, response, std::move(f));
+}
+
+void PmxGrpc::Stub::async::ListInputPortsSetup(::grpc::ClientContext* context, const ::pmx::grpc::EmptyRequest* request, ::pmx::grpc::ListInputPortSetupResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ListInputPortsSetup_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::pmx::grpc::ListInputPortSetupResponse>* PmxGrpc::Stub::PrepareAsyncListInputPortsSetupRaw(::grpc::ClientContext* context, const ::pmx::grpc::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::pmx::grpc::ListInputPortSetupResponse, ::pmx::grpc::EmptyRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ListInputPortsSetup_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::pmx::grpc::ListInputPortSetupResponse>* PmxGrpc::Stub::AsyncListInputPortsSetupRaw(::grpc::ClientContext* context, const ::pmx::grpc::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncListInputPortsSetupRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 PmxGrpc::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       PmxGrpc_method_names[0],
@@ -175,6 +200,16 @@ PmxGrpc::Service::Service() {
              ::pmx::grpc::Response* resp) {
                return service->ClearInputPort(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      PmxGrpc_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< PmxGrpc::Service, ::pmx::grpc::EmptyRequest, ::pmx::grpc::ListInputPortSetupResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](PmxGrpc::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::pmx::grpc::EmptyRequest* req,
+             ::pmx::grpc::ListInputPortSetupResponse* resp) {
+               return service->ListInputPortsSetup(ctx, req, resp);
+             }, this)));
 }
 
 PmxGrpc::Service::~Service() {
@@ -202,6 +237,13 @@ PmxGrpc::Service::~Service() {
 }
 
 ::grpc::Status PmxGrpc::Service::ClearInputPort(::grpc::ServerContext* context, const ::pmx::grpc::ClearInputPortRequest* request, ::pmx::grpc::Response* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status PmxGrpc::Service::ListInputPortsSetup(::grpc::ServerContext* context, const ::pmx::grpc::EmptyRequest* request, ::pmx::grpc::ListInputPortSetupResponse* response) {
   (void) context;
   (void) request;
   (void) response;

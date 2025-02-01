@@ -10,3 +10,7 @@ message SetupInputPortRequest {
 message ClearInputPortRequest {
   uint32 channel_id = 1;
 }
+
+message ListInputPortSetupResponse {
+  repeated string ports = 1;
+}
