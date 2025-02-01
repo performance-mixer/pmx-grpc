@@ -57,9 +57,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr ClearInputPortRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : channel_id_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
+      : channel_id_{0u},
         _cached_size_{0} {}
 
 template <typename>
@@ -125,7 +123,7 @@ const char descriptor_table_protodef_input_5fports_2eproto[] ABSL_ATTRIBUTE_SECT
     "\n\021input_ports.proto\022\010pmx.grpc\"9\n\025SetupIn"
     "putPortRequest\022\014\n\004port\030\001 \001(\t\022\022\n\nchannel_"
     "id\030\002 \001(\r\"+\n\025ClearInputPortRequest\022\022\n\ncha"
-    "nnel_id\030\001 \001(\tb\006proto3"
+    "nnel_id\030\001 \001(\rb\006proto3"
 };
 static ::absl::once_flag descriptor_table_input_5fports_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_input_5fports_2eproto = {
@@ -418,36 +416,19 @@ ClearInputPortRequest::ClearInputPortRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:pmx.grpc.ClearInputPortRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE ClearInputPortRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from, const ::pmx::grpc::ClearInputPortRequest& from_msg)
-      : channel_id_(arena, from.channel_id_),
-        _cached_size_{0} {}
-
 ClearInputPortRequest::ClearInputPortRequest(
-    ::google::protobuf::Arena* arena,
-    const ClearInputPortRequest& from)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  ClearInputPortRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-
-  // @@protoc_insertion_point(copy_constructor:pmx.grpc.ClearInputPortRequest)
+    ::google::protobuf::Arena* arena, const ClearInputPortRequest& from)
+    : ClearInputPortRequest(arena) {
+  MergeFrom(from);
 }
 inline PROTOBUF_NDEBUG_INLINE ClearInputPortRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : channel_id_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0} {}
 
 inline void ClearInputPortRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.channel_id_ = {};
 }
 ClearInputPortRequest::~ClearInputPortRequest() {
   // @@protoc_insertion_point(destructor:pmx.grpc.ClearInputPortRequest)
@@ -457,7 +438,6 @@ inline void ClearInputPortRequest::SharedDtor(MessageLite& self) {
   ClearInputPortRequest& this_ = static_cast<ClearInputPortRequest&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.channel_id_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -466,7 +446,7 @@ inline void* ClearInputPortRequest::PlacementNew_(const void*, void* mem,
   return ::new (mem) ClearInputPortRequest(arena);
 }
 constexpr auto ClearInputPortRequest::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ClearInputPortRequest),
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ClearInputPortRequest),
                                             alignof(ClearInputPortRequest));
 }
 PROTOBUF_CONSTINIT
@@ -497,7 +477,7 @@ const ::google::protobuf::internal::ClassData* ClearInputPortRequest::GetClassDa
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 49, 2> ClearInputPortRequest::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ClearInputPortRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -515,21 +495,18 @@ const ::_pbi::TcParseTable<0, 1, 0, 49, 2> ClearInputPortRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::pmx::grpc::ClearInputPortRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // string channel_id = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ClearInputPortRequest, _impl_.channel_id_)}},
+    // uint32 channel_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ClearInputPortRequest, _impl_.channel_id_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ClearInputPortRequest, _impl_.channel_id_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string channel_id = 1;
+    // uint32 channel_id = 1;
     {PROTOBUF_FIELD_OFFSET(ClearInputPortRequest, _impl_.channel_id_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
   }},
   // no aux_entries
   {{
-    "\36\12\0\0\0\0\0\0"
-    "pmx.grpc.ClearInputPortRequest"
-    "channel_id"
   }},
 };
 
@@ -540,7 +517,7 @@ PROTOBUF_NOINLINE void ClearInputPortRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.channel_id_.ClearToEmpty();
+  _impl_.channel_id_ = 0u;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -559,12 +536,11 @@ PROTOBUF_NOINLINE void ClearInputPortRequest::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // string channel_id = 1;
-          if (!this_._internal_channel_id().empty()) {
-            const std::string& _s = this_._internal_channel_id();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "pmx.grpc.ClearInputPortRequest.channel_id");
-            target = stream->WriteStringMaybeAliased(1, _s, target);
+          // uint32 channel_id = 1;
+          if (this_._internal_channel_id() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_channel_id(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -591,10 +567,10 @@ PROTOBUF_NOINLINE void ClearInputPortRequest::Clear() {
           (void)cached_has_bits;
 
            {
-            // string channel_id = 1;
-            if (!this_._internal_channel_id().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_channel_id());
+            // uint32 channel_id = 1;
+            if (this_._internal_channel_id() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_channel_id());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -609,8 +585,8 @@ void ClearInputPortRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, c
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_channel_id().empty()) {
-    _this->_internal_set_channel_id(from._internal_channel_id());
+  if (from._internal_channel_id() != 0) {
+    _this->_impl_.channel_id_ = from._impl_.channel_id_;
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -625,10 +601,8 @@ void ClearInputPortRequest::CopyFrom(const ClearInputPortRequest& from) {
 
 void ClearInputPortRequest::InternalSwap(ClearInputPortRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.channel_id_, &other->_impl_.channel_id_, arena);
+        swap(_impl_.channel_id_, other->_impl_.channel_id_);
 }
 
 ::google::protobuf::Metadata ClearInputPortRequest::GetMetadata() const {

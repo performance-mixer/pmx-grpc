@@ -8,5 +8,5 @@ message SetupInputPortRequest {
 }
 
 message ClearInputPortRequest {
-  string channel_id = 1;
+  uint32 channel_id = 1;
 }

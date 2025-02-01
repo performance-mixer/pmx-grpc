@@ -430,20 +430,14 @@ class ClearInputPortRequest final : public ::google::protobuf::Message
   enum : int {
     kChannelIdFieldNumber = 1,
   };
-  // string channel_id = 1;
+  // uint32 channel_id = 1;
   void clear_channel_id() ;
-  const std::string& channel_id() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_channel_id(Arg_&& arg, Args_... args);
-  std::string* mutable_channel_id();
-  PROTOBUF_NODISCARD std::string* release_channel_id();
-  void set_allocated_channel_id(std::string* value);
+  ::uint32_t channel_id() const;
+  void set_channel_id(::uint32_t value);
 
   private:
-  const std::string& _internal_channel_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_channel_id(
-      const std::string& value);
-  std::string* _internal_mutable_channel_id();
+  ::uint32_t _internal_channel_id() const;
+  void _internal_set_channel_id(::uint32_t value);
 
   public:
   // @@protoc_insertion_point(class_scope:pmx.grpc.ClearInputPortRequest)
@@ -452,7 +446,7 @@ class ClearInputPortRequest final : public ::google::protobuf::Message
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       0, 1, 0,
-      49, 2>
+      0, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -469,7 +463,7 @@ class ClearInputPortRequest final : public ::google::protobuf::Message
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const ClearInputPortRequest& from_msg);
-    ::google::protobuf::internal::ArenaStringPtr channel_id_;
+    ::uint32_t channel_id_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -567,52 +561,26 @@ inline void SetupInputPortRequest::_internal_set_channel_id(::uint32_t value) {
 
 // ClearInputPortRequest
 
-// string channel_id = 1;
+// uint32 channel_id = 1;
 inline void ClearInputPortRequest::clear_channel_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.channel_id_.ClearToEmpty();
+  _impl_.channel_id_ = 0u;
 }
-inline const std::string& ClearInputPortRequest::channel_id() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::uint32_t ClearInputPortRequest::channel_id() const {
   // @@protoc_insertion_point(field_get:pmx.grpc.ClearInputPortRequest.channel_id)
   return _internal_channel_id();
 }
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void ClearInputPortRequest::set_channel_id(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.channel_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+inline void ClearInputPortRequest::set_channel_id(::uint32_t value) {
+  _internal_set_channel_id(value);
   // @@protoc_insertion_point(field_set:pmx.grpc.ClearInputPortRequest.channel_id)
 }
-inline std::string* ClearInputPortRequest::mutable_channel_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_channel_id();
-  // @@protoc_insertion_point(field_mutable:pmx.grpc.ClearInputPortRequest.channel_id)
-  return _s;
-}
-inline const std::string& ClearInputPortRequest::_internal_channel_id() const {
+inline ::uint32_t ClearInputPortRequest::_internal_channel_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.channel_id_.Get();
+  return _impl_.channel_id_;
 }
-inline void ClearInputPortRequest::_internal_set_channel_id(const std::string& value) {
+inline void ClearInputPortRequest::_internal_set_channel_id(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.channel_id_.Set(value, GetArena());
-}
-inline std::string* ClearInputPortRequest::_internal_mutable_channel_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.channel_id_.Mutable( GetArena());
-}
-inline std::string* ClearInputPortRequest::release_channel_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:pmx.grpc.ClearInputPortRequest.channel_id)
-  return _impl_.channel_id_.Release();
-}
-inline void ClearInputPortRequest::set_allocated_channel_id(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.channel_id_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.channel_id_.IsDefault()) {
-    _impl_.channel_id_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:pmx.grpc.ClearInputPortRequest.channel_id)
+  _impl_.channel_id_ = value;
 }
 
 #ifdef __GNUC__
