@@ -27,7 +27,6 @@
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
 #include "port.pb.h"
-#include "output_ports.pb.h"
 #include "input_ports.pb.h"
 #include "generic.pb.h"
 // @@protoc_insertion_point(includes)

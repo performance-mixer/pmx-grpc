@@ -37,36 +37,33 @@ static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_pmx_5fgrpc_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\016pmx_grpc.proto\022\010pmx.grpc\032\nport.proto\032\022"
-    "output_ports.proto\032\021input_ports.proto\032\rg"
-    "eneric.proto2\371\002\n\007PmxGrpc\022D\n\tListPorts\022\032."
-    "pmx.grpc.ListPortsRequest\032\033.pmx.grpc.Lis"
-    "tPortsResponse\022E\n\016SetOutputPorts\022\037.pmx.g"
-    "rpc.SetOutputPortsRequest\032\022.pmx.grpc.Res"
-    "ponse\022E\n\016SetupInputPort\022\037.pmx.grpc.Setup"
-    "InputPortRequest\032\022.pmx.grpc.Response\022E\n\016"
-    "ClearInputPort\022\037.pmx.grpc.ClearInputPort"
-    "Request\032\022.pmx.grpc.Response\022S\n\023ListInput"
-    "PortsSetup\022\026.pmx.grpc.EmptyRequest\032$.pmx"
-    ".grpc.ListInputPortSetupResponseb\006proto3"
+    "\n\016pmx_grpc.proto\022\010pmx.grpc\032\nport.proto\032\021"
+    "input_ports.proto\032\rgeneric.proto2\262\002\n\007Pmx"
+    "Grpc\022D\n\tListPorts\022\032.pmx.grpc.ListPortsRe"
+    "quest\032\033.pmx.grpc.ListPortsResponse\022E\n\016Se"
+    "tupInputPort\022\037.pmx.grpc.SetupInputPortRe"
+    "quest\032\022.pmx.grpc.Response\022E\n\016ClearInputP"
+    "ort\022\037.pmx.grpc.ClearInputPortRequest\032\022.p"
+    "mx.grpc.Response\022S\n\023ListInputPortsSetup\022"
+    "\026.pmx.grpc.EmptyRequest\032$.pmx.grpc.ListI"
+    "nputPortSetupResponseb\006proto3"
 };
-static const ::_pbi::DescriptorTable* const descriptor_table_pmx_5fgrpc_2eproto_deps[4] =
+static const ::_pbi::DescriptorTable* const descriptor_table_pmx_5fgrpc_2eproto_deps[3] =
     {
         &::descriptor_table_generic_2eproto,
         &::descriptor_table_input_5fports_2eproto,
-        &::descriptor_table_output_5fports_2eproto,
         &::descriptor_table_port_2eproto,
 };
 static ::absl::once_flag descriptor_table_pmx_5fgrpc_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_pmx_5fgrpc_2eproto = {
     false,
     false,
-    480,
+    389,
     descriptor_table_protodef_pmx_5fgrpc_2eproto,
     "pmx_grpc.proto",
     &descriptor_table_pmx_5fgrpc_2eproto_once,
     descriptor_table_pmx_5fgrpc_2eproto_deps,
-    4,
+    3,
     0,
     schemas,
     file_default_instances,
