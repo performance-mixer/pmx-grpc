@@ -19,6 +19,7 @@ message ListPort {
   string path = 8;
   string dsp_format = 9;
   string audio_channel = 10;
+  bool is_monitor = 12;
 }
 
 message ListPortsRequest {}

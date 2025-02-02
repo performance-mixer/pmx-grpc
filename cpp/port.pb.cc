@@ -69,6 +69,7 @@ inline constexpr ListPort::Impl_::Impl_(
         node_id_{0u},
         direction_{static_cast< ::pmx::grpc::PortDirection >(0)},
         physical_{false},
+        is_monitor_{false},
         object_serial_{0u},
         _cached_size_{0} {}
 
@@ -143,6 +144,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::ListPort, _impl_.path_),
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::ListPort, _impl_.dsp_format_),
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::ListPort, _impl_.audio_channel_),
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::ListPort, _impl_.is_monitor_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::ListPortsRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -165,8 +167,8 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::pmx::grpc::ListPort)},
-        {19, -1, -1, sizeof(::pmx::grpc::ListPortsRequest)},
-        {27, -1, -1, sizeof(::pmx::grpc::ListPortsResponse)},
+        {20, -1, -1, sizeof(::pmx::grpc::ListPortsRequest)},
+        {28, -1, -1, sizeof(::pmx::grpc::ListPortsResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::pmx::grpc::_ListPort_default_instance_._instance,
@@ -175,22 +177,23 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 const char descriptor_table_protodef_port_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\nport.proto\022\010pmx.grpc\"\341\001\n\010ListPort\022\n\n\002i"
+    "\n\nport.proto\022\010pmx.grpc\"\365\001\n\010ListPort\022\n\n\002i"
     "d\030\002 \001(\r\022\017\n\007node_id\030\003 \001(\r\022\025\n\robject_seria"
     "l\030\013 \001(\r\022\014\n\004name\030\001 \001(\t\022*\n\tdirection\030\004 \001(\016"
     "2\027.pmx.grpc.PortDirection\022\020\n\010physical\030\005 "
     "\001(\010\022\r\n\005alias\030\006 \001(\t\022\r\n\005group\030\007 \001(\t\022\014\n\004pat"
     "h\030\010 \001(\t\022\022\n\ndsp_format\030\t \001(\t\022\025\n\raudio_cha"
-    "nnel\030\n \001(\t\"\022\n\020ListPortsRequest\"6\n\021ListPo"
-    "rtsResponse\022!\n\005ports\030\001 \003(\0132\022.pmx.grpc.Li"
-    "stPort*-\n\rPortDirection\022\006\n\002IN\020\000\022\007\n\003OUT\020\001"
-    "\022\013\n\007UNKNOWN\020\002b\006proto3"
+    "nnel\030\n \001(\t\022\022\n\nis_monitor\030\014 \001(\010\"\022\n\020ListPo"
+    "rtsRequest\"6\n\021ListPortsResponse\022!\n\005ports"
+    "\030\001 \003(\0132\022.pmx.grpc.ListPort*-\n\rPortDirect"
+    "ion\022\006\n\002IN\020\000\022\007\n\003OUT\020\001\022\013\n\007UNKNOWN\020\002b\006proto"
+    "3"
 };
 static ::absl::once_flag descriptor_table_port_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_port_2eproto = {
     false,
     false,
-    381,
+    401,
     descriptor_table_protodef_port_2eproto,
     "port.proto",
     &descriptor_table_port_2eproto_once,
@@ -336,15 +339,15 @@ const ::google::protobuf::internal::ClassData* ListPort::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 11, 0, 75, 2> ListPort::_table_ = {
+const ::_pbi::TcParseTable<4, 12, 0, 75, 2> ListPort::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    11, 120,  // max_field_number, fast_idx_mask
+    12, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294965248,  // skipmap
+    4294963200,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    11,  // num_field_entries
+    12,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -388,7 +391,9 @@ const ::_pbi::TcParseTable<4, 11, 0, 75, 2> ListPort::_table_ = {
     // uint32 object_serial = 11;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ListPort, _impl_.object_serial_), 63>(),
      {88, 63, 0, PROTOBUF_FIELD_OFFSET(ListPort, _impl_.object_serial_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // bool is_monitor = 12;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ListPort, _impl_.is_monitor_), 63>(),
+     {96, 63, 0, PROTOBUF_FIELD_OFFSET(ListPort, _impl_.is_monitor_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -428,6 +433,9 @@ const ::_pbi::TcParseTable<4, 11, 0, 75, 2> ListPort::_table_ = {
     // uint32 object_serial = 11;
     {PROTOBUF_FIELD_OFFSET(ListPort, _impl_.object_serial_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // bool is_monitor = 12;
+    {PROTOBUF_FIELD_OFFSET(ListPort, _impl_.is_monitor_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }},
   // no aux_entries
   {{
@@ -559,6 +567,13 @@ PROTOBUF_NOINLINE void ListPort::Clear() {
                 11, this_._internal_object_serial(), target);
           }
 
+          // bool is_monitor = 12;
+          if (this_._internal_is_monitor() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                12, this_._internal_is_monitor(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -633,6 +648,10 @@ PROTOBUF_NOINLINE void ListPort::Clear() {
             if (this_._internal_physical() != 0) {
               total_size += 2;
             }
+            // bool is_monitor = 12;
+            if (this_._internal_is_monitor() != 0) {
+              total_size += 2;
+            }
             // uint32 object_serial = 11;
             if (this_._internal_object_serial() != 0) {
               total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
@@ -680,6 +699,9 @@ void ListPort::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
   }
   if (from._internal_physical() != 0) {
     _this->_impl_.physical_ = from._impl_.physical_;
+  }
+  if (from._internal_is_monitor() != 0) {
+    _this->_impl_.is_monitor_ = from._impl_.is_monitor_;
   }
   if (from._internal_object_serial() != 0) {
     _this->_impl_.object_serial_ = from._impl_.object_serial_;

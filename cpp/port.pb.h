@@ -414,6 +414,7 @@ class ListPort final : public ::google::protobuf::Message
     kNodeIdFieldNumber = 3,
     kDirectionFieldNumber = 4,
     kPhysicalFieldNumber = 5,
+    kIsMonitorFieldNumber = 12,
     kObjectSerialFieldNumber = 11,
   };
   // string name = 1;
@@ -552,6 +553,16 @@ class ListPort final : public ::google::protobuf::Message
   void _internal_set_physical(bool value);
 
   public:
+  // bool is_monitor = 12;
+  void clear_is_monitor() ;
+  bool is_monitor() const;
+  void set_is_monitor(bool value);
+
+  private:
+  bool _internal_is_monitor() const;
+  void _internal_set_is_monitor(bool value);
+
+  public:
   // uint32 object_serial = 11;
   void clear_object_serial() ;
   ::uint32_t object_serial() const;
@@ -567,7 +578,7 @@ class ListPort final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 11, 0,
+      4, 12, 0,
       75, 2>
       _table_;
 
@@ -595,6 +606,7 @@ class ListPort final : public ::google::protobuf::Message
     ::uint32_t node_id_;
     int direction_;
     bool physical_;
+    bool is_monitor_;
     ::uint32_t object_serial_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -1212,6 +1224,28 @@ inline void ListPort::set_allocated_audio_channel(std::string* value) {
     _impl_.audio_channel_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:pmx.grpc.ListPort.audio_channel)
+}
+
+// bool is_monitor = 12;
+inline void ListPort::clear_is_monitor() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.is_monitor_ = false;
+}
+inline bool ListPort::is_monitor() const {
+  // @@protoc_insertion_point(field_get:pmx.grpc.ListPort.is_monitor)
+  return _internal_is_monitor();
+}
+inline void ListPort::set_is_monitor(bool value) {
+  _internal_set_is_monitor(value);
+  // @@protoc_insertion_point(field_set:pmx.grpc.ListPort.is_monitor)
+}
+inline bool ListPort::_internal_is_monitor() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.is_monitor_;
+}
+inline void ListPort::_internal_set_is_monitor(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.is_monitor_ = value;
 }
 
 // -------------------------------------------------------------------
