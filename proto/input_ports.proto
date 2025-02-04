@@ -3,8 +3,9 @@ syntax = "proto3";
 package pmx.grpc;
 
 message SetupInputPortRequest {
-  string port = 1;
-  uint32 channel_id = 2;
+  uint32 channel_id = 1;
+  optional string port = 2;
+  optional uint32 group_channel_id = 3;
 }
 
 message ClearInputPortRequest {
@@ -12,8 +13,9 @@ message ClearInputPortRequest {
 }
 
 message InputPortSetup {
-  string port = 1;
-  uint32 channel_id = 2;
+  uint32 channel_id = 1;
+  optional string port = 2;
+  optional uint32 group_channel_id = 3;
 }
 
 message ListInputPortSetupResponse {

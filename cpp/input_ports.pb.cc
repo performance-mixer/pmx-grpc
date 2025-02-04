@@ -29,11 +29,12 @@ namespace grpc {
 
 inline constexpr SetupInputPortRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : port_(
+      : _cached_size_{0},
+        port_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         channel_id_{0u},
-        _cached_size_{0} {}
+        group_channel_id_{0u} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR SetupInputPortRequest::SetupInputPortRequest(::_pbi::ConstantInitialized)
@@ -57,11 +58,12 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr InputPortSetup::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : port_(
+      : _cached_size_{0},
+        port_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         channel_id_{0u},
-        _cached_size_{0} {}
+        group_channel_id_{0u} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR InputPortSetup::InputPortSetup(::_pbi::ConstantInitialized)
@@ -141,7 +143,7 @@ static constexpr const ::_pb::ServiceDescriptor**
 const ::uint32_t
     TableStruct_input_5fports_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
-        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetupInputPortRequest, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetupInputPortRequest, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -149,8 +151,12 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetupInputPortRequest, _impl_.port_),
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetupInputPortRequest, _impl_.channel_id_),
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetupInputPortRequest, _impl_.port_),
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::SetupInputPortRequest, _impl_.group_channel_id_),
+        ~0u,
+        0,
+        1,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::ClearInputPortRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -160,7 +166,7 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::ClearInputPortRequest, _impl_.channel_id_),
-        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::InputPortSetup, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::InputPortSetup, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -168,8 +174,12 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::pmx::grpc::InputPortSetup, _impl_.port_),
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::InputPortSetup, _impl_.channel_id_),
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::InputPortSetup, _impl_.port_),
+        PROTOBUF_FIELD_OFFSET(::pmx::grpc::InputPortSetup, _impl_.group_channel_id_),
+        ~0u,
+        0,
+        1,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::pmx::grpc::ListInputPortSetupResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -183,10 +193,10 @@ const ::uint32_t
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::pmx::grpc::SetupInputPortRequest)},
-        {10, -1, -1, sizeof(::pmx::grpc::ClearInputPortRequest)},
-        {19, -1, -1, sizeof(::pmx::grpc::InputPortSetup)},
-        {29, -1, -1, sizeof(::pmx::grpc::ListInputPortSetupResponse)},
+        {0, 11, -1, sizeof(::pmx::grpc::SetupInputPortRequest)},
+        {14, -1, -1, sizeof(::pmx::grpc::ClearInputPortRequest)},
+        {23, 34, -1, sizeof(::pmx::grpc::InputPortSetup)},
+        {37, -1, -1, sizeof(::pmx::grpc::ListInputPortSetupResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::pmx::grpc::_SetupInputPortRequest_default_instance_._instance,
@@ -196,19 +206,22 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 const char descriptor_table_protodef_input_5fports_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\021input_ports.proto\022\010pmx.grpc\"9\n\025SetupIn"
-    "putPortRequest\022\014\n\004port\030\001 \001(\t\022\022\n\nchannel_"
-    "id\030\002 \001(\r\"+\n\025ClearInputPortRequest\022\022\n\ncha"
-    "nnel_id\030\001 \001(\r\"2\n\016InputPortSetup\022\014\n\004port\030"
-    "\001 \001(\t\022\022\n\nchannel_id\030\002 \001(\r\"F\n\032ListInputPo"
-    "rtSetupResponse\022(\n\006setups\030\001 \003(\0132\030.pmx.gr"
-    "pc.InputPortSetupb\006proto3"
+    "\n\021input_ports.proto\022\010pmx.grpc\"{\n\025SetupIn"
+    "putPortRequest\022\022\n\nchannel_id\030\001 \001(\r\022\021\n\004po"
+    "rt\030\002 \001(\tH\000\210\001\001\022\035\n\020group_channel_id\030\003 \001(\rH"
+    "\001\210\001\001B\007\n\005_portB\023\n\021_group_channel_id\"+\n\025Cl"
+    "earInputPortRequest\022\022\n\nchannel_id\030\001 \001(\r\""
+    "t\n\016InputPortSetup\022\022\n\nchannel_id\030\001 \001(\r\022\021\n"
+    "\004port\030\002 \001(\tH\000\210\001\001\022\035\n\020group_channel_id\030\003 \001"
+    "(\rH\001\210\001\001B\007\n\005_portB\023\n\021_group_channel_id\"F\n"
+    "\032ListInputPortSetupResponse\022(\n\006setups\030\001 "
+    "\003(\0132\030.pmx.grpc.InputPortSetupb\006proto3"
 };
 static ::absl::once_flag descriptor_table_input_5fports_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_input_5fports_2eproto = {
     false,
     false,
-    265,
+    397,
     descriptor_table_protodef_input_5fports_2eproto,
     "input_ports.proto",
     &descriptor_table_input_5fports_2eproto_once,
@@ -227,6 +240,10 @@ namespace grpc {
 
 class SetupInputPortRequest::_Internal {
  public:
+  using HasBits =
+      decltype(std::declval<SetupInputPortRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_._has_bits_);
 };
 
 SetupInputPortRequest::SetupInputPortRequest(::google::protobuf::Arena* arena)
@@ -241,8 +258,9 @@ SetupInputPortRequest::SetupInputPortRequest(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE SetupInputPortRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::pmx::grpc::SetupInputPortRequest& from_msg)
-      : port_(arena, from.port_),
-        _cached_size_{0} {}
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        port_(arena, from.port_) {}
 
 SetupInputPortRequest::SetupInputPortRequest(
     ::google::protobuf::Arena* arena,
@@ -257,19 +275,30 @@ SetupInputPortRequest::SetupInputPortRequest(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.channel_id_ = from._impl_.channel_id_;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, channel_id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, channel_id_),
+           offsetof(Impl_, group_channel_id_) -
+               offsetof(Impl_, channel_id_) +
+               sizeof(Impl_::group_channel_id_));
 
   // @@protoc_insertion_point(copy_constructor:pmx.grpc.SetupInputPortRequest)
 }
 inline PROTOBUF_NDEBUG_INLINE SetupInputPortRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : port_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0},
+        port_(arena) {}
 
 inline void SetupInputPortRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.channel_id_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, channel_id_),
+           0,
+           offsetof(Impl_, group_channel_id_) -
+               offsetof(Impl_, channel_id_) +
+               sizeof(Impl_::group_channel_id_));
 }
 SetupInputPortRequest::~SetupInputPortRequest() {
   // @@protoc_insertion_point(destructor:pmx.grpc.SetupInputPortRequest)
@@ -319,15 +348,15 @@ const ::google::protobuf::internal::ClassData* SetupInputPortRequest::GetClassDa
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 43, 2> SetupInputPortRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 0, 43, 2> SetupInputPortRequest::_table_ = {
   {
-    0,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -337,25 +366,32 @@ const ::_pbi::TcParseTable<1, 2, 0, 43, 2> SetupInputPortRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::pmx::grpc::SetupInputPortRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // uint32 channel_id = 2;
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 channel_id = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetupInputPortRequest, _impl_.channel_id_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.channel_id_)}},
-    // string port = 1;
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.channel_id_)}},
+    // optional string port = 2;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.port_)}},
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.port_)}},
+    // optional uint32 group_channel_id = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetupInputPortRequest, _impl_.group_channel_id_), 1>(),
+     {24, 1, 0, PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.group_channel_id_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string port = 1;
-    {PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.port_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 channel_id = 2;
-    {PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.channel_id_), 0, 0,
+    // uint32 channel_id = 1;
+    {PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.channel_id_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // optional string port = 2;
+    {PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.port_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional uint32 group_channel_id = 3;
+    {PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.group_channel_id_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
   }},
   // no aux_entries
   {{
-    "\36\4\0\0\0\0\0\0"
+    "\36\0\4\0\0\0\0\0"
     "pmx.grpc.SetupInputPortRequest"
     "port"
   }},
@@ -368,8 +404,13 @@ PROTOBUF_NOINLINE void SetupInputPortRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.port_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.port_.ClearNonDefaultToEmpty();
+  }
   _impl_.channel_id_ = 0u;
+  _impl_.group_channel_id_ = 0u;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -388,19 +429,27 @@ PROTOBUF_NOINLINE void SetupInputPortRequest::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // string port = 1;
-          if (!this_._internal_port().empty()) {
-            const std::string& _s = this_._internal_port();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "pmx.grpc.SetupInputPortRequest.port");
-            target = stream->WriteStringMaybeAliased(1, _s, target);
-          }
-
-          // uint32 channel_id = 2;
+          // uint32 channel_id = 1;
           if (this_._internal_channel_id() != 0) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-                2, this_._internal_channel_id(), target);
+                1, this_._internal_channel_id(), target);
+          }
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // optional string port = 2;
+          if (cached_has_bits & 0x00000001u) {
+            const std::string& _s = this_._internal_port();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "pmx.grpc.SetupInputPortRequest.port");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // optional uint32 group_channel_id = 3;
+          if (cached_has_bits & 0x00000002u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_group_channel_id(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -428,15 +477,25 @@ PROTOBUF_NOINLINE void SetupInputPortRequest::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // string port = 1;
-            if (!this_._internal_port().empty()) {
+            // optional string port = 2;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_port());
             }
-            // uint32 channel_id = 2;
+          }
+           {
+            // uint32 channel_id = 1;
             if (this_._internal_channel_id() != 0) {
               total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
                   this_._internal_channel_id());
+            }
+          }
+           {
+            // optional uint32 group_channel_id = 3;
+            if (cached_has_bits & 0x00000002u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_group_channel_id());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -451,12 +510,17 @@ void SetupInputPortRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, c
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_port().empty()) {
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     _this->_internal_set_port(from._internal_port());
   }
   if (from._internal_channel_id() != 0) {
     _this->_impl_.channel_id_ = from._impl_.channel_id_;
   }
+  if (cached_has_bits & 0x00000002u) {
+    _this->_impl_.group_channel_id_ = from._impl_.group_channel_id_;
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -473,8 +537,14 @@ void SetupInputPortRequest::InternalSwap(SetupInputPortRequest* PROTOBUF_RESTRIC
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.port_, &other->_impl_.port_, arena);
-        swap(_impl_.channel_id_, other->_impl_.channel_id_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.group_channel_id_)
+      + sizeof(SetupInputPortRequest::_impl_.group_channel_id_)
+      - PROTOBUF_FIELD_OFFSET(SetupInputPortRequest, _impl_.channel_id_)>(
+          reinterpret_cast<char*>(&_impl_.channel_id_),
+          reinterpret_cast<char*>(&other->_impl_.channel_id_));
 }
 
 ::google::protobuf::Metadata SetupInputPortRequest::GetMetadata() const {
@@ -691,6 +761,10 @@ void ClearInputPortRequest::InternalSwap(ClearInputPortRequest* PROTOBUF_RESTRIC
 
 class InputPortSetup::_Internal {
  public:
+  using HasBits =
+      decltype(std::declval<InputPortSetup>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_._has_bits_);
 };
 
 InputPortSetup::InputPortSetup(::google::protobuf::Arena* arena)
@@ -705,8 +779,9 @@ InputPortSetup::InputPortSetup(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE InputPortSetup::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::pmx::grpc::InputPortSetup& from_msg)
-      : port_(arena, from.port_),
-        _cached_size_{0} {}
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        port_(arena, from.port_) {}
 
 InputPortSetup::InputPortSetup(
     ::google::protobuf::Arena* arena,
@@ -721,19 +796,30 @@ InputPortSetup::InputPortSetup(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.channel_id_ = from._impl_.channel_id_;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, channel_id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, channel_id_),
+           offsetof(Impl_, group_channel_id_) -
+               offsetof(Impl_, channel_id_) +
+               sizeof(Impl_::group_channel_id_));
 
   // @@protoc_insertion_point(copy_constructor:pmx.grpc.InputPortSetup)
 }
 inline PROTOBUF_NDEBUG_INLINE InputPortSetup::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : port_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0},
+        port_(arena) {}
 
 inline void InputPortSetup::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.channel_id_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, channel_id_),
+           0,
+           offsetof(Impl_, group_channel_id_) -
+               offsetof(Impl_, channel_id_) +
+               sizeof(Impl_::group_channel_id_));
 }
 InputPortSetup::~InputPortSetup() {
   // @@protoc_insertion_point(destructor:pmx.grpc.InputPortSetup)
@@ -783,15 +869,15 @@ const ::google::protobuf::internal::ClassData* InputPortSetup::GetClassData() co
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 36, 2> InputPortSetup::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 0, 36, 2> InputPortSetup::_table_ = {
   {
-    0,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -801,25 +887,32 @@ const ::_pbi::TcParseTable<1, 2, 0, 36, 2> InputPortSetup::_table_ = {
     ::_pbi::TcParser::GetTable<::pmx::grpc::InputPortSetup>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // uint32 channel_id = 2;
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 channel_id = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(InputPortSetup, _impl_.channel_id_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.channel_id_)}},
-    // string port = 1;
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.channel_id_)}},
+    // optional string port = 2;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.port_)}},
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.port_)}},
+    // optional uint32 group_channel_id = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(InputPortSetup, _impl_.group_channel_id_), 1>(),
+     {24, 1, 0, PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.group_channel_id_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string port = 1;
-    {PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.port_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 channel_id = 2;
-    {PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.channel_id_), 0, 0,
+    // uint32 channel_id = 1;
+    {PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.channel_id_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // optional string port = 2;
+    {PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.port_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional uint32 group_channel_id = 3;
+    {PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.group_channel_id_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
   }},
   // no aux_entries
   {{
-    "\27\4\0\0\0\0\0\0"
+    "\27\0\4\0\0\0\0\0"
     "pmx.grpc.InputPortSetup"
     "port"
   }},
@@ -832,8 +925,13 @@ PROTOBUF_NOINLINE void InputPortSetup::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.port_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.port_.ClearNonDefaultToEmpty();
+  }
   _impl_.channel_id_ = 0u;
+  _impl_.group_channel_id_ = 0u;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -852,19 +950,27 @@ PROTOBUF_NOINLINE void InputPortSetup::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // string port = 1;
-          if (!this_._internal_port().empty()) {
-            const std::string& _s = this_._internal_port();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "pmx.grpc.InputPortSetup.port");
-            target = stream->WriteStringMaybeAliased(1, _s, target);
-          }
-
-          // uint32 channel_id = 2;
+          // uint32 channel_id = 1;
           if (this_._internal_channel_id() != 0) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-                2, this_._internal_channel_id(), target);
+                1, this_._internal_channel_id(), target);
+          }
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // optional string port = 2;
+          if (cached_has_bits & 0x00000001u) {
+            const std::string& _s = this_._internal_port();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "pmx.grpc.InputPortSetup.port");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // optional uint32 group_channel_id = 3;
+          if (cached_has_bits & 0x00000002u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_group_channel_id(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -892,15 +998,25 @@ PROTOBUF_NOINLINE void InputPortSetup::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // string port = 1;
-            if (!this_._internal_port().empty()) {
+            // optional string port = 2;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_port());
             }
-            // uint32 channel_id = 2;
+          }
+           {
+            // uint32 channel_id = 1;
             if (this_._internal_channel_id() != 0) {
               total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
                   this_._internal_channel_id());
+            }
+          }
+           {
+            // optional uint32 group_channel_id = 3;
+            if (cached_has_bits & 0x00000002u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_group_channel_id());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -915,12 +1031,17 @@ void InputPortSetup::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_port().empty()) {
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     _this->_internal_set_port(from._internal_port());
   }
   if (from._internal_channel_id() != 0) {
     _this->_impl_.channel_id_ = from._impl_.channel_id_;
   }
+  if (cached_has_bits & 0x00000002u) {
+    _this->_impl_.group_channel_id_ = from._impl_.group_channel_id_;
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -937,8 +1058,14 @@ void InputPortSetup::InternalSwap(InputPortSetup* PROTOBUF_RESTRICT other) {
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.port_, &other->_impl_.port_, arena);
-        swap(_impl_.channel_id_, other->_impl_.channel_id_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.group_channel_id_)
+      + sizeof(InputPortSetup::_impl_.group_channel_id_)
+      - PROTOBUF_FIELD_OFFSET(InputPortSetup, _impl_.channel_id_)>(
+          reinterpret_cast<char*>(&_impl_.channel_id_),
+          reinterpret_cast<char*>(&other->_impl_.channel_id_));
 }
 
 ::google::protobuf::Metadata InputPortSetup::GetMetadata() const {

@@ -226,10 +226,12 @@ class SetupInputPortRequest final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kPortFieldNumber = 1,
-    kChannelIdFieldNumber = 2,
+    kPortFieldNumber = 2,
+    kChannelIdFieldNumber = 1,
+    kGroupChannelIdFieldNumber = 3,
   };
-  // string port = 1;
+  // optional string port = 2;
+  bool has_port() const;
   void clear_port() ;
   const std::string& port() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -245,7 +247,7 @@ class SetupInputPortRequest final : public ::google::protobuf::Message
   std::string* _internal_mutable_port();
 
   public:
-  // uint32 channel_id = 2;
+  // uint32 channel_id = 1;
   void clear_channel_id() ;
   ::uint32_t channel_id() const;
   void set_channel_id(::uint32_t value);
@@ -255,12 +257,23 @@ class SetupInputPortRequest final : public ::google::protobuf::Message
   void _internal_set_channel_id(::uint32_t value);
 
   public:
+  // optional uint32 group_channel_id = 3;
+  bool has_group_channel_id() const;
+  void clear_group_channel_id() ;
+  ::uint32_t group_channel_id() const;
+  void set_group_channel_id(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_group_channel_id() const;
+  void _internal_set_group_channel_id(::uint32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:pmx.grpc.SetupInputPortRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 0,
+      2, 3, 0,
       43, 2>
       _table_;
 
@@ -278,9 +291,11 @@ class SetupInputPortRequest final : public ::google::protobuf::Message
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const SetupInputPortRequest& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr port_;
     ::uint32_t channel_id_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::uint32_t group_channel_id_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -434,10 +449,12 @@ class InputPortSetup final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kPortFieldNumber = 1,
-    kChannelIdFieldNumber = 2,
+    kPortFieldNumber = 2,
+    kChannelIdFieldNumber = 1,
+    kGroupChannelIdFieldNumber = 3,
   };
-  // string port = 1;
+  // optional string port = 2;
+  bool has_port() const;
   void clear_port() ;
   const std::string& port() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -453,7 +470,7 @@ class InputPortSetup final : public ::google::protobuf::Message
   std::string* _internal_mutable_port();
 
   public:
-  // uint32 channel_id = 2;
+  // uint32 channel_id = 1;
   void clear_channel_id() ;
   ::uint32_t channel_id() const;
   void set_channel_id(::uint32_t value);
@@ -463,12 +480,23 @@ class InputPortSetup final : public ::google::protobuf::Message
   void _internal_set_channel_id(::uint32_t value);
 
   public:
+  // optional uint32 group_channel_id = 3;
+  bool has_group_channel_id() const;
+  void clear_group_channel_id() ;
+  ::uint32_t group_channel_id() const;
+  void set_group_channel_id(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_group_channel_id() const;
+  void _internal_set_group_channel_id(::uint32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:pmx.grpc.InputPortSetup)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 0,
+      2, 3, 0,
       36, 2>
       _table_;
 
@@ -486,9 +514,11 @@ class InputPortSetup final : public ::google::protobuf::Message
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const InputPortSetup& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr port_;
     ::uint32_t channel_id_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::uint32_t group_channel_id_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -898,55 +928,7 @@ class ListInputPortSetupResponse final : public ::google::protobuf::Message
 
 // SetupInputPortRequest
 
-// string port = 1;
-inline void SetupInputPortRequest::clear_port() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.port_.ClearToEmpty();
-}
-inline const std::string& SetupInputPortRequest::port() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:pmx.grpc.SetupInputPortRequest.port)
-  return _internal_port();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void SetupInputPortRequest::set_port(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.port_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:pmx.grpc.SetupInputPortRequest.port)
-}
-inline std::string* SetupInputPortRequest::mutable_port() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_port();
-  // @@protoc_insertion_point(field_mutable:pmx.grpc.SetupInputPortRequest.port)
-  return _s;
-}
-inline const std::string& SetupInputPortRequest::_internal_port() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.port_.Get();
-}
-inline void SetupInputPortRequest::_internal_set_port(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.port_.Set(value, GetArena());
-}
-inline std::string* SetupInputPortRequest::_internal_mutable_port() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.port_.Mutable( GetArena());
-}
-inline std::string* SetupInputPortRequest::release_port() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:pmx.grpc.SetupInputPortRequest.port)
-  return _impl_.port_.Release();
-}
-inline void SetupInputPortRequest::set_allocated_port(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.port_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.port_.IsDefault()) {
-    _impl_.port_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:pmx.grpc.SetupInputPortRequest.port)
-}
-
-// uint32 channel_id = 2;
+// uint32 channel_id = 1;
 inline void SetupInputPortRequest::clear_channel_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.channel_id_ = 0u;
@@ -966,6 +948,103 @@ inline ::uint32_t SetupInputPortRequest::_internal_channel_id() const {
 inline void SetupInputPortRequest::_internal_set_channel_id(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.channel_id_ = value;
+}
+
+// optional string port = 2;
+inline bool SetupInputPortRequest::has_port() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline void SetupInputPortRequest::clear_port() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.port_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& SetupInputPortRequest::port() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:pmx.grpc.SetupInputPortRequest.port)
+  return _internal_port();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void SetupInputPortRequest::set_port(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.port_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:pmx.grpc.SetupInputPortRequest.port)
+}
+inline std::string* SetupInputPortRequest::mutable_port() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_port();
+  // @@protoc_insertion_point(field_mutable:pmx.grpc.SetupInputPortRequest.port)
+  return _s;
+}
+inline const std::string& SetupInputPortRequest::_internal_port() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.port_.Get();
+}
+inline void SetupInputPortRequest::_internal_set_port(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.port_.Set(value, GetArena());
+}
+inline std::string* SetupInputPortRequest::_internal_mutable_port() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.port_.Mutable( GetArena());
+}
+inline std::string* SetupInputPortRequest::release_port() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:pmx.grpc.SetupInputPortRequest.port)
+  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* released = _impl_.port_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.port_.Set("", GetArena());
+  }
+  return released;
+}
+inline void SetupInputPortRequest::set_allocated_port(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.port_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.port_.IsDefault()) {
+    _impl_.port_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:pmx.grpc.SetupInputPortRequest.port)
+}
+
+// optional uint32 group_channel_id = 3;
+inline bool SetupInputPortRequest::has_group_channel_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline void SetupInputPortRequest::clear_group_channel_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.group_channel_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t SetupInputPortRequest::group_channel_id() const {
+  // @@protoc_insertion_point(field_get:pmx.grpc.SetupInputPortRequest.group_channel_id)
+  return _internal_group_channel_id();
+}
+inline void SetupInputPortRequest::set_group_channel_id(::uint32_t value) {
+  _internal_set_group_channel_id(value);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_set:pmx.grpc.SetupInputPortRequest.group_channel_id)
+}
+inline ::uint32_t SetupInputPortRequest::_internal_group_channel_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.group_channel_id_;
+}
+inline void SetupInputPortRequest::_internal_set_group_channel_id(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.group_channel_id_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -998,55 +1077,7 @@ inline void ClearInputPortRequest::_internal_set_channel_id(::uint32_t value) {
 
 // InputPortSetup
 
-// string port = 1;
-inline void InputPortSetup::clear_port() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.port_.ClearToEmpty();
-}
-inline const std::string& InputPortSetup::port() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:pmx.grpc.InputPortSetup.port)
-  return _internal_port();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void InputPortSetup::set_port(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.port_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:pmx.grpc.InputPortSetup.port)
-}
-inline std::string* InputPortSetup::mutable_port() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_port();
-  // @@protoc_insertion_point(field_mutable:pmx.grpc.InputPortSetup.port)
-  return _s;
-}
-inline const std::string& InputPortSetup::_internal_port() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.port_.Get();
-}
-inline void InputPortSetup::_internal_set_port(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.port_.Set(value, GetArena());
-}
-inline std::string* InputPortSetup::_internal_mutable_port() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.port_.Mutable( GetArena());
-}
-inline std::string* InputPortSetup::release_port() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:pmx.grpc.InputPortSetup.port)
-  return _impl_.port_.Release();
-}
-inline void InputPortSetup::set_allocated_port(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.port_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.port_.IsDefault()) {
-    _impl_.port_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:pmx.grpc.InputPortSetup.port)
-}
-
-// uint32 channel_id = 2;
+// uint32 channel_id = 1;
 inline void InputPortSetup::clear_channel_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.channel_id_ = 0u;
@@ -1066,6 +1097,103 @@ inline ::uint32_t InputPortSetup::_internal_channel_id() const {
 inline void InputPortSetup::_internal_set_channel_id(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.channel_id_ = value;
+}
+
+// optional string port = 2;
+inline bool InputPortSetup::has_port() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline void InputPortSetup::clear_port() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.port_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& InputPortSetup::port() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:pmx.grpc.InputPortSetup.port)
+  return _internal_port();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void InputPortSetup::set_port(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.port_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:pmx.grpc.InputPortSetup.port)
+}
+inline std::string* InputPortSetup::mutable_port() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_port();
+  // @@protoc_insertion_point(field_mutable:pmx.grpc.InputPortSetup.port)
+  return _s;
+}
+inline const std::string& InputPortSetup::_internal_port() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.port_.Get();
+}
+inline void InputPortSetup::_internal_set_port(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.port_.Set(value, GetArena());
+}
+inline std::string* InputPortSetup::_internal_mutable_port() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.port_.Mutable( GetArena());
+}
+inline std::string* InputPortSetup::release_port() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:pmx.grpc.InputPortSetup.port)
+  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* released = _impl_.port_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.port_.Set("", GetArena());
+  }
+  return released;
+}
+inline void InputPortSetup::set_allocated_port(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.port_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.port_.IsDefault()) {
+    _impl_.port_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:pmx.grpc.InputPortSetup.port)
+}
+
+// optional uint32 group_channel_id = 3;
+inline bool InputPortSetup::has_group_channel_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline void InputPortSetup::clear_group_channel_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.group_channel_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t InputPortSetup::group_channel_id() const {
+  // @@protoc_insertion_point(field_get:pmx.grpc.InputPortSetup.group_channel_id)
+  return _internal_group_channel_id();
+}
+inline void InputPortSetup::set_group_channel_id(::uint32_t value) {
+  _internal_set_group_channel_id(value);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_set:pmx.grpc.InputPortSetup.group_channel_id)
+}
+inline ::uint32_t InputPortSetup::_internal_group_channel_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.group_channel_id_;
+}
+inline void InputPortSetup::_internal_set_group_channel_id(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.group_channel_id_ = value;
 }
 
 // -------------------------------------------------------------------
