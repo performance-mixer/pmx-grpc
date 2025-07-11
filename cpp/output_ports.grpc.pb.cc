@@ -19,9 +19,11 @@
 #include <grpcpp/server_context.h>
 #include <grpcpp/impl/service_type.h>
 #include <grpcpp/support/sync_stream.h>
+#include <grpcpp/ports_def.inc>
 namespace pmx {
 namespace grpc {
 
 }  // namespace pmx
 }  // namespace grpc
+#include <grpcpp/ports_undef.inc>
 
